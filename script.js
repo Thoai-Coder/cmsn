@@ -103,7 +103,7 @@ btnDecline?.addEventListener("click", async () => {
     await sleep(200);
     
     // Tự động click nút "Nhận"
-    choiceNote.textContent = "Hehe, bắt buộc phải nhận thôi! 😄";
+    choiceNote.textContent = "Bạn đã chọn nhận!";
     await sleep(800);
     
     busy = false;
@@ -185,7 +185,7 @@ async function onEnter(i) {
   // Scene 6: kết thúc (typewriter)
   if (i === 5) {
     btnNext.style.display = "none";
-    if (hint) hint.textContent = "Kết thúc 💖";
+    if (hint) hint.textContent = "";
     await typeScene(i);
     return;
   }
