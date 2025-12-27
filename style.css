@@ -1,0 +1,442 @@
+:root{
+  --bg1:#ff9a9e;
+  --bg2:#fad0c4;
+  --bg3:#fbc2eb;
+  --bg4:#a6c1ee;
+}
+
+*{ box-sizing: border-box; }
+
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3),var(--bg4));
+  font-family: Arial, sans-serif;
+  padding: 14px;
+  overflow:hidden;
+}
+
+.wrap{
+  width: min(460px, 96vw);
+  text-align:center;
+}
+
+.top h1{
+  margin: 0 0 6px;
+  color:#ff2d55;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.18);
+  font-size: 30px;
+}
+.top p{
+  margin: 0 0 14px;
+  color: rgba(0,0,0,0.65);
+  font-size: 16px;
+}
+
+.stage{
+  display: grid;
+  place-items: center;
+}
+
+/* hiệu ứng chuyển scene - mượt mà hơn */
+.scene{
+  grid-area: 1 / 1;
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+.scene.show{
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+.scene.hidden{
+  opacity: 0;
+  transform: translateY(20px) scale(0.96) rotate(-1deg);
+  pointer-events: none;
+}
+
+.cake{
+  width: min(420px, 96vw);
+  height: auto;
+}
+
+/* bánh "thở" */
+#cakeGroup{
+  transform-origin: 260px 320px;
+  animation: cakeFloat 2.8s ease-in-out infinite;
+}
+@keyframes cakeFloat{
+  0%,100%{ transform: translateY(0px); }
+  50%{ transform: translateY(-6px); }
+}
+
+/* sprinkle màu */
+.sp{ opacity:0.95; }
+.s1{ fill:#ff2d55; }
+.s2{ fill:#ffd166; }
+.s3{ fill:#4dabf7; }
+.s4{ fill:#51cf66; }
+.s5{ fill:#b197fc; }
+
+/* lửa rung + nhấp nháy */
+#flameWrap{
+  transform-origin: 260px 108px;
+  animation: flameWobble 0.22s ease-in-out infinite alternate, flameBlink 0.6s ease-in-out infinite;
+}
+@keyframes flameWobble{
+  from{ transform: rotate(-10deg) scale(1); }
+  to  { transform: rotate(10deg)  scale(1.05); }
+}
+@keyframes flameBlink{
+  0%{ opacity: 0.95; }
+  50%{ opacity: 0.70; }
+  100%{ opacity: 1; }
+}
+.flame-core{
+  transform-origin: 260px 98px;
+  animation: corePulse 0.3s ease-in-out infinite alternate;
+}
+@keyframes corePulse{
+  from{ opacity: 0.75; transform: scale(0.98); }
+  to  { opacity: 0.95; transform: scale(1.05); }
+}
+
+/* Card với hiệu ứng gradient động */
+.msg-card{
+  width: min(420px, 92vw);
+  padding: 22px 18px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.88);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-gradient {
+  background: linear-gradient(135deg, 
+    rgba(255,255,255,0.95) 0%,
+    rgba(255,200,220,0.85) 50%,
+    rgba(255,255,255,0.95) 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Sparkle effects */
+.sparkle-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.sparkle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(45deg, #ffd700, #ffed4e, #fff);
+  border-radius: 50%;
+  opacity: 0;
+  animation: sparkleFloat 3s ease-in-out infinite;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+}
+
+.sparkle:nth-child(1) {
+  left: 10%;
+  animation-delay: 0s;
+}
+.sparkle:nth-child(2) {
+  left: 30%;
+  animation-delay: 0.6s;
+}
+.sparkle:nth-child(3) {
+  left: 50%;
+  animation-delay: 1.2s;
+}
+.sparkle:nth-child(4) {
+  left: 70%;
+  animation-delay: 1.8s;
+}
+.sparkle:nth-child(5) {
+  left: 90%;
+  animation-delay: 2.4s;
+}
+
+@keyframes sparkleFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(100%) scale(0) rotate(0deg);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100%) scale(1.5) rotate(180deg);
+  }
+}
+
+/* Shimmer effect for text */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    #ff2d55 0%,
+    #ff7aa2 25%,
+    #ffd700 50%,
+    #ff7aa2 75%,
+    #ff2d55 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmerMove 3s linear infinite;
+}
+
+@keyframes shimmerMove {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.msg-title{
+  font-size: 26px;
+  font-weight: 900;
+  color:#ff2d55;
+  margin-bottom: 10px;
+}
+.msg-line{
+  font-size: 20px;
+  font-weight: 800;
+  color: rgba(0,0,0,0.78);
+  margin: 6px 0;
+}
+.small-note{
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(0,0,0,0.58);
+}
+
+/* Ảnh: giữ nguyên tỉ lệ & KHÔNG phóng to quá kích thước gốc */
+.avatar{
+  display: block;
+  margin: 10px auto 0;
+  width: auto;                 /* giữ đúng kích thước ảnh gốc */
+  max-width: min(320px, 100%); /* chỉ thu nhỏ để vừa card */
+  height: auto;                /* giữ tỉ lệ gốc */
+  border-radius: 18px;
+  border: 3px solid rgba(255,255,255,0.9);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.18);
+}
+
+/* Typewriter */
+.type{
+  min-height: 1.3em;
+  display: block;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* cursor nhấp nháy */
+.cursor{
+  border-right: 3px solid rgba(0,0,0,0.55);
+  padding-right: 3px;
+  animation: blink 0.8s steps(1) infinite;
+}
+@keyframes blink{
+  50%{ border-right-color: transparent; }
+}
+
+/* nút với hiệu ứng 3D */
+.btn{
+  margin-top: 14px;
+  width: 100%;
+  border: none;
+  border-radius: 16px;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, #ff2d55 0%, #ff5f8f 100%);
+  color:#fff;
+  font-weight: 700;
+  font-size: 18px;
+  cursor:pointer;
+  box-shadow: 0 14px 30px rgba(255,45,85,0.35),
+              0 4px 8px rgba(255,45,85,0.2),
+              inset 0 -2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              filter 0.15s ease, 
+              opacity 0.15s ease,
+              box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(255,45,85,0.45),
+              0 6px 12px rgba(255,45,85,0.3),
+              inset 0 -2px 5px rgba(0,0,0,0.1);
+}
+
+.btn:active{ 
+  transform: translateY(0) scale(0.98); 
+  box-shadow: 0 8px 20px rgba(255,45,85,0.3),
+              0 2px 4px rgba(255,45,85,0.2),
+              inset 0 2px 5px rgba(0,0,0,0.15);
+}
+.btn:disabled{ opacity: 0.65; cursor: not-allowed; }
+
+.btn-row{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 14px;
+  position: relative;
+}
+
+/* Animation di chuyển nút Nhận sang phải */
+.swap-left {
+  animation: moveToRight 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animation di chuyển nút Không nhận sang trái */
+.swap-right {
+  animation: moveToLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes moveToRight {
+  0% { 
+    transform: translateX(0);
+    z-index: 1;
+  }
+  100% { 
+    transform: translateX(calc(100% + 10px));
+    z-index: 1;
+  }
+}
+
+@keyframes moveToLeft {
+  0% { 
+    transform: translateX(0);
+    z-index: 2;
+  }
+  100% { 
+    transform: translateX(calc(-100% - 10px));
+    z-index: 2;
+  }
+}
+
+.btn-small{
+  margin-top: 0;
+  padding: 12px 12px;
+  font-size: 16px;
+  border-radius: 14px;
+  position: relative;
+}
+.btn-ghost{
+  background: rgba(0,0,0,0.08);
+  color: rgba(0,0,0,0.78);
+  box-shadow: none;
+}
+
+.hint{
+  margin-top: 10px;
+  min-height: 22px;
+  font-weight: 700;
+  color: rgba(0,0,0,0.7);
+}
+
+/* confetti */
+.confetti{
+  position: fixed;
+  top: -12px;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  opacity: 0.95;
+  animation: confettiFall 2.6s linear forwards;
+  z-index: 9999;
+}
+@keyframes confettiFall{
+  to{ transform: translateY(110vh) rotate(360deg); }
+}
+
+/* Gift box với hiệu ứng 3D */
+.gift-box{
+  width: min(220px, 72vw);
+  height: auto;
+  margin: 16px auto 0;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  filter: drop-shadow(0 18px 30px rgba(0,0,0,0.20));
+  transform-origin: 50% 70%;
+  animation: giftFloat 1.6s ease-in-out infinite;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.gift-box:hover {
+  transform: translateY(-8px) scale(1.05) rotate(2deg);
+  filter: drop-shadow(0 25px 45px rgba(255,45,85,0.35));
+  animation: giftShake 0.5s ease-in-out;
+}
+
+@keyframes giftShake {
+  0%, 100% { transform: translateY(-8px) scale(1.05) rotate(0deg); }
+  25% { transform: translateY(-8px) scale(1.05) rotate(-5deg); }
+  75% { transform: translateY(-8px) scale(1.05) rotate(5deg); }
+}
+
+.gift-box:focus-visible{
+  outline: 3px solid rgba(255,45,85,0.5);
+  border-radius: 18px;
+  box-shadow: 0 0 0 6px rgba(255,45,85,0.2);
+}
+@keyframes giftFloat{
+  0%,100%{ transform: translateY(0) scale(1) rotate(0deg); }
+  50%{ transform: translateY(-8px) scale(1.03) rotate(-2deg); }
+}
+.gift-svg{
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width:360px){
+  .top h1{ font-size: 26px; }
+  .top p{ font-size: 15px; }
+  .btn{ font-size: 17px; }
+  .msg-title{ font-size: 22px; }
+  .msg-line{ font-size: 18px; }
+}

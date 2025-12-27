@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday 🎂</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="wrap">
+
+
+    <section class="stage" aria-label="Khu vực hiển thị">
+
+      <!-- SCENE 1: BÁNH -->
+      <div class="scene show" id="scene1Cake" aria-hidden="false">
+        <header class="top" aria-label="Tiêu đề">
+          <h1>🎉 Chúc Mừng Sinh Nhật! </h1>
+        </header>
+              <svg class="cake" viewBox="0 0 520 520" role="img" aria-label="Bánh sinh nhật có nến và lửa rung">
+          <defs>
+            <linearGradient id="bgGlow" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffffff" stop-opacity="0.95"/>
+              <stop offset="1" stop-color="#ffffff" stop-opacity="0.70"/>
+            </linearGradient>
+
+            <linearGradient id="cakeSide" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#ff5f8f"/>
+              <stop offset="0.5" stop-color="#ff7aa2"/>
+              <stop offset="1" stop-color="#ff4d86"/>
+            </linearGradient>
+
+            <linearGradient id="cakeTop" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#ffe2ea"/>
+              <stop offset="1" stop-color="#ffd0dd"/>
+            </linearGradient>
+
+            <linearGradient id="icing" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#ffffff"/>
+              <stop offset="1" stop-color="#f7f7ff"/>
+            </linearGradient>
+
+            <radialGradient id="flameGrad" cx="50%" cy="60%" r="60%">
+              <stop offset="0" stop-color="#fff4a8"/>
+              <stop offset="0.55" stop-color="#ffd166"/>
+              <stop offset="0.85" stop-color="#ff7a00"/>
+              <stop offset="1" stop-color="#ff2d55"/>
+            </radialGradient>
+
+            <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+              <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000" flood-opacity="0.22"/>
+            </filter>
+
+            <filter id="flameGlow" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur stdDeviation="6" result="blur"/>
+              <feColorMatrix in="blur" type="matrix"
+                values="1 0 0 0 0
+                        0 1 0 0 0
+                        0 0 1 0 0
+                        0 0 0 0.9 0" result="glow"/>
+              <feMerge>
+                <feMergeNode in="glow"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+
+          <rect x="40" y="40" width="440" height="440" rx="34" fill="url(#bgGlow)" filter="url(#softShadow)"/>
+          <ellipse cx="260" cy="392" rx="150" ry="22" fill="#000" opacity="0.14"/>
+
+          <g>
+            <ellipse cx="260" cy="385" rx="185" ry="45" fill="#ffffff" opacity="0.95"/>
+            <ellipse cx="260" cy="385" rx="155" ry="33" fill="#eaf0ff" opacity="0.9"/>
+            <ellipse cx="260" cy="385" rx="110" ry="22" fill="#ffffff" opacity="0.9"/>
+          </g>
+
+          <g id="cakeGroup">
+            <!-- tầng dưới -->
+            <g>
+              <rect x="130" y="265" width="260" height="115" rx="26" fill="url(#cakeSide)"/>
+              <rect x="130" y="245" width="260" height="55" rx="28" fill="url(#cakeTop)"/>
+              <path d="M150 265
+                      C160 288, 180 290, 185 265
+                      C190 240, 210 240, 215 265
+                      C220 295, 245 295, 250 265
+                      C255 235, 275 235, 280 265
+                      C285 295, 310 295, 315 265
+                      C320 240, 340 240, 345 265
+                      C350 292, 370 292, 370 265
+                      L370 255
+                      C330 232, 190 232, 150 255 Z"
+                    fill="url(#icing)" opacity="0.98"/>
+            </g>
+
+            <!-- tầng trên -->
+            <g>
+              <rect x="170" y="190" width="180" height="90" rx="24" fill="url(#cakeSide)" opacity="0.98"/>
+              <rect x="170" y="175" width="180" height="40" rx="22" fill="url(#cakeTop)"/>
+              <path d="M185 190
+                      C195 212, 210 214, 215 190
+                      C220 170, 235 170, 240 190
+                      C245 220, 268 220, 272 190
+                      C276 168, 292 168, 296 190
+                      C300 214, 320 214, 330 190
+                      L330 184
+                      C300 165, 215 165, 185 184 Z"
+                    fill="url(#icing)" opacity="0.98"/>
+            </g>
+
+            <!-- sprinkle -->
+            <g class="sprinkles">
+              <rect x="205" y="175" width="18" height="6" rx="3" class="sp s1"/>
+              <rect x="240" y="168" width="18" height="6" rx="3" class="sp s2" transform="rotate(14 249 171)"/>
+              <rect x="275" y="176" width="18" height="6" rx="3" class="sp s3" transform="rotate(-10 284 179)"/>
+              <circle cx="225" cy="188" r="4" class="sp s4"/>
+              <circle cx="295" cy="190" r="4" class="sp s5"/>
+
+              <rect x="170" y="245" width="18" height="6" rx="3" class="sp s2" transform="rotate(12 179 248)"/>
+              <rect x="210" y="238" width="18" height="6" rx="3" class="sp s3"/>
+              <rect x="250" y="246" width="18" height="6" rx="3" class="sp s1" transform="rotate(-14 259 249)"/>
+              <rect x="290" y="238" width="18" height="6" rx="3" class="sp s5"/>
+              <rect x="330" y="246" width="18" height="6" rx="3" class="sp s4" transform="rotate(10 339 249)"/>
+            </g>
+
+            <!-- nến + lửa -->
+            <g id="candleGroup">
+              <rect x="248" y="120" width="24" height="70" rx="12" fill="#ffffff"/>
+              <path d="M252 124 L268 124" stroke="#ff2d55" stroke-width="6" stroke-linecap="round"/>
+              <path d="M252 138 L268 138" stroke="#ffd166" stroke-width="6" stroke-linecap="round"/>
+              <path d="M252 152 L268 152" stroke="#4dabf7" stroke-width="6" stroke-linecap="round"/>
+              <path d="M252 166 L268 166" stroke="#51cf66" stroke-width="6" stroke-linecap="round"/>
+              <path d="M252 180 L268 180" stroke="#b197fc" stroke-width="6" stroke-linecap="round"/>
+
+              <path d="M260 118 C258 112, 262 108, 260 102" stroke="#333" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+              <g id="flameWrap" filter="url(#flameGlow)">
+                <path id="flame"
+                  d="M260 62
+                     C248 78, 248 95, 260 108
+                     C272 95, 272 78, 260 62 Z"
+                  fill="url(#flameGrad)"/>
+                <path class="flame-core"
+                  d="M260 76
+                     C255 84, 256 94, 260 101
+                     C264 94, 265 84, 260 76 Z"
+                  fill="#fff4a8" opacity="0.9"/>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <!-- SCENE 2: GOM LẠI + ẢNH (typewriter) -->
+      <div class="scene hidden" id="scene2" aria-hidden="true">
+        <div class="msg-card">
+          <div class="msg-title type" id="s2Title" data-text="Chúc mừng sinh nhật Nguyễn Văn A"></div>
+          <div class="msg-line  type" id="s2Date"  data-text="10/10/2000"></div>
+          <div class="msg-line  type" id="s2Age"   data-text="Happy 20+"></div>
+
+          <img class="avatar" src="anh1.jpeg" alt="anh1">
+
+        </div>
+      </div>
+
+      <!-- SCENE 3 (typewriter) -->
+      <div class="scene hidden" id="scene3" aria-hidden="true">
+        <div class="msg-card card-gradient">
+          <div class="sparkle-container">
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+          </div>
+          <div class="msg-title type shimmer" id="s3Text" data-text="Có 1 món quà đặc biệt"></div>
+        </div>
+      </div>
+
+      <!-- SCENE 4: HỘP QUÀ (CLICK) -->
+      <div class="scene hidden" id="scene4" aria-hidden="true">
+        <div class="msg-card">
+
+          <div class="gift-box" id="giftBox" role="button" tabindex="0" aria-label="Hộp quà">
+            <svg viewBox="0 0 256 256" class="gift-svg" aria-hidden="true">
+              <defs>
+                <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#ff2d55"/>
+                  <stop offset="1" stop-color="#ff7aa2"/>
+                </linearGradient>
+                <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#ffd166"/>
+                  <stop offset="1" stop-color="#ffb703"/>
+                </linearGradient>
+              </defs>
+
+              <rect x="40" y="84" width="176" height="44" rx="12" fill="url(#g1)"/>
+              <rect x="48" y="120" width="160" height="104" rx="14" fill="#ffffff" opacity="0.96"/>
+              <rect x="48" y="120" width="160" height="104" rx="14" fill="url(#g1)" opacity="0.92"/>
+
+              <rect x="116" y="84" width="24" height="140" rx="10" fill="url(#g2)"/>
+              <rect x="48" y="156" width="160" height="22" rx="10" fill="url(#g2)"/>
+
+              <path d="M128 70
+                       C110 44, 82 44, 86 70
+                       C90 92, 114 92, 128 78
+                       C142 92, 166 92, 170 70
+                       C174 44, 146 44, 128 70 Z"
+                    fill="url(#g2)"/>
+              <circle cx="128" cy="78" r="10" fill="#fff" opacity="0.75"/>
+            </svg>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SCENE 5: 1 ẢNH + 2 NÚT -->
+      <div class="scene hidden" id="scene5" aria-hidden="true">
+        <div class="msg-card">
+          <img class="avatar" id="giftImg" src="anh3.jpeg" alt="Món quà">
+          <div class="btn-row">
+            <button class="btn btn-small" id="btnAccept">Nhận 🎁</button>
+            <button class="btn btn-small btn-ghost" id="btnDecline">Không nhận</button>
+          </div>
+          <div class="small-note" id="choiceNote"></div>
+        </div>
+      </div>
+
+      <!-- SCENE 6: THANK YOU (typewriter) -->
+      <div class="scene hidden" id="scene6" aria-hidden="true">
+        <div class="msg-card">
+          <div class="msg-title type" id="s6Title" data-text="Cầm lấy"></div>
+          <img class="avatar" src="anh4.jpg" alt="Món quà đặc biệt">
+          <div class="msg-line  type" id="s6Line"  data-text="Sinh Nhật Vui Vẻ"></div>
+        </div>
+      </div>
+
+    </section>
+
+    <button class="btn" id="btnNext">Thổi nến 🎈</button>
+    <div class="hint" id="hint"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
