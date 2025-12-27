@@ -440,3 +440,12 @@ body{
   .msg-title{ font-size: 22px; }
   .msg-line{ font-size: 18px; }
 }
+.msg-name{
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 0.4px;
+  margin-bottom: 8px;
+  color: rgba(0,0,0,0.88);
+  text-transform: capitalize;
+  text-shadow: 0 10px 25px rgba(0,0,0,0.10);
+}

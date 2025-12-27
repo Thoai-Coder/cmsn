@@ -9,7 +9,7 @@ const scenes = [
   { id: "scene1Cake" },
 
   // Scene 2: gom lại (type nhiều dòng)
-  { id: "scene2", typeIds: ["s2Title", "s2Date", "s2Age", "s2Note"], buttonText: "Tiếp tục ➜" },
+  { id: "scene2", typeIds: ["s2Title", "s2Name", "s2Date", "s2Age"], buttonText: "Tiếp tục ➜" },
 
   // Scene 3: typewriter với hiệu ứng đẹp
   { id: "scene3", typeIds: ["s3Text"], buttonText: "Tiếp tục ➜" },
